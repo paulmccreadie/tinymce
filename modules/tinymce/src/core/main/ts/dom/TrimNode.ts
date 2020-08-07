@@ -51,7 +51,7 @@ const trimNode = (dom, node) => {
 
       // Also keep text nodes with only spaces if surrounded by spans.
       // eg. "<p><span>a</span> <span>b</span></p>" should keep space between a and b
-      if (isEmpty && surroundedBySpans(node)) {
+      if (surroundedBySpans(node)) {
         return;
       }
     } else if (NodeType.isElement(node)) {
