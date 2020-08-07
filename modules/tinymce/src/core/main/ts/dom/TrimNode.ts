@@ -45,13 +45,13 @@ const trimNode = (dom, node) => {
       // Keep if parent element is a block or if there is some useful content
       const isEmpty = isWhitespaceText(node.nodeValue);
 
-      if (dom.isBlock(node.parentNode) || isEmpty) {
+      if (dom.isBlock(node.parentNode) || !isEmpty) {
         return;
       }
 
       // Also keep text nodes with only spaces if surrounded by spans.
       // eg. "<p><span>a</span> <span>b</span></p>" should keep space between a and b
-      if (!isEmpty && surroundedBySpans(node)) {
+      if (isEmpty && surroundedBySpans(node)) {
         return;
       }
     } else if (NodeType.isElement(node)) {
